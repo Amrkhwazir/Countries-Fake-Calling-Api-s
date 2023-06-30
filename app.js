@@ -5,12 +5,12 @@ let language = document.querySelector('.card-language');
 let capital = document.querySelector('.card-capital');
 let continent = document.querySelector('.card-continent');
 let detail = document.querySelector('.card-desc');
-let btn = document.querySelector('.btn');
 let card = document.querySelector('.card');
+let latInput = document.querySelector('#latInput');
+let langInput = document.querySelector('#langInput');
+let locateBtn = document.querySelector('#saveBtn');
+let modalopner = document.querySelector('#modalopner');
 
-btn.addEventListener('click',displayHandler )
-
-function displayHandler(){
 
 function uiCreation(data){
 console.log(data)
@@ -18,13 +18,12 @@ console.log(data)
 image.src = data.flags.png;
 title.textContent = `Country Name: ${data.name.common}`;
 continent.textContent = `Continent: ${data.region}`;
-language.textContent = `Language: ${data.languages.deu}`;
+language.textContent = `Language: ${Object.values(data.languages)}`;
 capital.textContent = `Capital: ${data.capital[0]}`
-detail.textContent = `
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, voluptates accusamus corrupti numquam tenetur perferendis temporibus magni doloribus quaerat velit?`
 
-btn.style.display = "none"
+modalopner.style.display = "none"
 card.style.display = "block"
+
 }
 
 
@@ -58,9 +57,18 @@ uiCreation(countriesData[0])
 )
 }
 // whereAmI(-33.933,18.474)
-whereAmI(19.037,72.873)
 // whereAmI(52.508,13.382)
+
+function inputsHandler(){
+ let firstInput =latInput.value
+ let secondInput =langInput.value
+
+ whereAmI(firstInput,secondInput)
+
+ firstInput = ""
+ secondInput = ""
 }
+locateBtn.addEventListener('click', inputsHandler)
 
 
 

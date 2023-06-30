@@ -8,57 +8,85 @@
     
     <style>
       body{
-        background-color: whitesmoke;
+        background-color: rgb(5, 5, 5);
       }
-      .main{
+      /* .main{
         position: relative;
         width: 100vw;
         height: 100vh;
-        border: 1px solid red;
         justify-content: space-around !important;
         padding: 20px;
-      }
-    .btn{
+      } */
+    .btn .button{
+      position: absolute;
+      left: 500px;
+      top: 250px;
       width: 220px;
-      height: 50px;
-      font-size: 22px;
+      height: 60px;
       font-weight: 500;
-      margin: 0px auto;
       text-align: center;
-      margin: 230px 500px;
       border: none;
     } 
     .button{
-      width: 100%;
-      height: 100%;
+      width: 180px;
+      height: 50px;
       background-color: rgb(18, 18, 18);
-      border: none;
+      border: 2px solid orange !important;
       color: white;
       transition: 1s all ease-out;
     }
     .button:hover{
       background-color: rgb(252, 155, 0);
-      box-shadow: 2px 2px 5px 1px grey;
+
     }
     .button:active{
       transform: scale(0.8);
     }
     .card{
-      /* display: none; */
       position: absolute;
-      left: 100px;
+      left: 500px;
       top: 50px;
       background: none; 
       border: none;
     }
+    .card-body{
+      text-align: center;
+      color: white;
+       font-weight: 500;
+    }
+    .modal-content{
+      background-color: rgb(18, 18, 18) !important; 
+      color: whitesmoke;
+    }
     </style>
     
   </head>
+
 <body>
 
+<!-- Modal -->
+<div class="modal fade mt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Geocode.xyz</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" id="latInput" type="text" placeholder="Enter any latiude" aria-label="default input example">
+        <input class="form-control mt-3" id="langInput" type="text" placeholder="Enter any longitude" aria-label="default input example">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="saveBtn"  data-bs-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="main">
+
 <div class="btn">
-  <button class="button">Where Am I</button>
+  <button class="button" id="modalopner" data-bs-toggle="modal" data-bs-target="#exampleModal">Where Am I</button>
 </div>
     <div class="card" style="width: 16rem;">
         <img id="image" src="" class="card-img-top">
